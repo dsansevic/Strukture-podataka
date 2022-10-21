@@ -4,8 +4,6 @@
 #include <stdlib.h>
 
 #define FILE_DIDNT_OPEN_ERROR -1
-#define MAX_LINE 1024
-#define MAX_FILE_NAME 256
 #define MAX 50
 
 typedef struct
