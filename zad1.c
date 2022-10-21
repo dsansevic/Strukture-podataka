@@ -5,16 +5,18 @@
 
 #define FILE_DIDNT_OPEN_ERROR -1
 #define MAX 50
+#define MAX_LINE 1024
+#define MAX_FILE_NAME 256
 
 typedef struct
 {
-    char name[20];
-    char lastname[20];
+    char name[MAX];
+    char lastname[MAX];
     int score;
 }STUDENT;
 
 
-int countStudentsFromFile(char *f)
+int countStudentsFromFile(filename f)
 {
     FILE* fp = NULL;
     int count = 0;
@@ -29,7 +31,6 @@ int countStudentsFromFile(char *f)
         if(fgetc(fp) == '\n')
             count++;
     }
-    rewind(fp); 
     fclose(fp);
     return count - 1;
 }
