@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #define FILE_DIDNT_OPEN_ERROR -1
+<<<<<<< HEAD
 #define EXIT_SUCCESS 0
 #define MAX_LINE 1024
 #define MAX_FILE_NAME 256
@@ -13,6 +14,16 @@ typedef struct
 {
     char name[MAXLENGTH];
     char lastname[MAXLENGTH];
+=======
+#define MAX 50
+#define MAX_LINE 1024
+#define MAX_FILE_NAME 256
+
+typedef struct
+{
+    char name[MAX];
+    char lastname[MAX];
+>>>>>>> 1abd9c4188a26037f0cb095d7b81cd4237133c31
     int score;
 }STUDENT;
 
@@ -21,6 +32,7 @@ int EnterStudents(char*, int, STUDENT*);
 int PrintStudents(int, STUDENT*, int);
 int FindMax(int, STUDENT*);
 
+<<<<<<< HEAD
 
 int main()
 {
@@ -54,6 +66,9 @@ int main()
 
 
 int countStudentsFromFile(char* filename)
+=======
+int countStudentsFromFile(filename f)
+>>>>>>> 1abd9c4188a26037f0cb095d7b81cd4237133c31
 {
     FILE* fp = NULL;
     int count = 0;
@@ -70,7 +85,10 @@ int countStudentsFromFile(char* filename)
         if (strcmp(buffer, "\n") != 0)
             count++;
     }
+<<<<<<< HEAD
     printf("%d", count);
+=======
+>>>>>>> 1abd9c4188a26037f0cb095d7b81cd4237133c31
     fclose(fp);
     return count;
 }
