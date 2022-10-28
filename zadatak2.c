@@ -157,7 +157,7 @@ Pozicija PronadiElement(char* x, Pozicija P)
 		printf("Element ne postoji");
 		return NULL;
 	}
-	printf("Ime: %s\nPrezime: %s\nGodina: %d\n", P->ime, P->prezime, P->godina);
+	printf("Podaci korisnika:\nIme: %s\nPrezime: %s\nGodina: %d\n", P->ime, P->prezime, P->godina);
 	return P;
 }
 
