@@ -30,7 +30,6 @@ Pozicija TraziPrethodnog(char*, Pozicija);
 int main()
 {
 	int a = 0, b = 0, c = 0, i = 0;
-	Pozicija poz;
 	char prez[MAX] = { 0 };
 	Pozicija Head = NULL;
 	Head = (Pozicija)malloc(sizeof(osoba));
