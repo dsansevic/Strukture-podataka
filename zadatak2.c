@@ -60,6 +60,7 @@ int main()
 	else if (a == 2)
 	{
 		printf("Odabrali ste unos na kraj liste. Mozete poceti s unosom podataka\n");
+		UnosNaKraj(Head);
 
 		printf("Zelite li unijeti jos jednu osobu na kraj liste? \nUkoliko zelite unesite 1, inace upisite 2.\n");
 		scanf("%d", &b);
@@ -68,7 +69,7 @@ int main()
 			printf("Koliko osoba zelite unijeti?\n");
 			scanf("%d", &c);
 			for (i = 0; i < c; i++)
-				UnosNaPocetak(Head);
+				UnosNaKraj(Head);
 		}
 	}
 	else
