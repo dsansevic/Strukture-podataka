@@ -71,9 +71,11 @@ int main()
 	}
 	else
 		printf("Krivi unos");
+	
+	printf("\nVasa lista:\n");
 	IspisListe(Head->Next);
 
-	printf("Zelite li obrisati korisnike?\nAko zelite, upisite 1\n");
+	printf("\nZelite li obrisati korisnike?\nAko zelite, upisite 1\n");
 	scanf("%d", &a);
 	if (a == 1)
 	{
@@ -86,11 +88,13 @@ int main()
 			printf("Unesite prezime korisnika:\n");
 			scanf(" %s", prez);
 			BrisiElement(prez, Head);
-			IspisListe(Head->Next);
+			
 		}
+		printf("\nVasa nova lista:\n");
+		IspisListe(Head->Next);
 	}
 
-	printf("Zelite li naci odredenog korisnika?\nAko zelite, upisite 1.\n");
+	printf("\nZelite li naci odredenog korisnika?\nAko zelite, upisite 1.\n");
 	scanf("%d", &a);
 	if (a == 1)
 	{
@@ -129,7 +133,7 @@ int UnosNaKraj(Pozicija P)
 	
 	if (Q == NULL)
 	{
-		printf("Greska u alociranju!");
+		printf("Greska u alociranju memorije!");
 		return FILE_ERROR;
 	}
 	UnosPodataka(Q);
