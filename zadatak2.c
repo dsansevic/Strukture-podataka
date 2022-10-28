@@ -175,7 +175,7 @@ int IspisListe(Pozicija P)
 {
 	if (P == NULL)
 	{
-		printf("Lista je prazna!");
+		printf("Lista je prazna!\n");
 		return FILE_ERROR;
 	}
 
