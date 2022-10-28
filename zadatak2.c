@@ -21,10 +21,9 @@ int UnosPodataka(Pozicija);
 int UnosNaPocetak(Pozicija);
 int UnosNaKraj(Pozicija);
 int IspisListe(Pozicija);
-Pozicija PronadiElement(char*, Pozicija);
 int BrisiElement(char*, Pozicija);
+Pozicija PronadiElement(char*, Pozicija);
 Pozicija TraziPrethodnog(char*, Pozicija);
-
 
 
 int main()
@@ -32,6 +31,7 @@ int main()
 	int a = 0, b = 0, c = 0, i = 0;
 	char prez[MAX] = { 0 };
 	Pozicija Head = NULL;
+	
 	Head = (Pozicija)malloc(sizeof(osoba));
 	Head->Next = NULL;
 
@@ -51,9 +51,7 @@ int main()
 			scanf("%d", &c);
 			for (i = 0; i < c; i++)
 				UnosNaPocetak(Head);
-
 		}
-
 	}
 
 	else if (a == 2)
@@ -106,11 +104,11 @@ int main()
 }
 
 
-
 int UnosNaPocetak(Pozicija P)
 {
 	Pozicija Q = NULL;
 	Q = (Pozicija)malloc(sizeof(osoba));
+	
 	if (Q == NULL)
 	{
 		printf("Greska u alociranju!");
@@ -128,6 +126,7 @@ int UnosNaKraj(Pozicija P)
 {
 	Pozicija Q = NULL;
 	Q = (Pozicija)malloc(sizeof(osoba));
+	
 	if (Q == NULL)
 	{
 		printf("Greska u alociranju!");
@@ -191,6 +190,7 @@ Pozicija TraziPrethodnog(char* x, Pozicija P)
 {
 	Pozicija Pret = P;
 	P = P->Next;
+	
 	while (P != NULL && strcmp(P->prezime, x))
 	{
 		Pret = Pret->Next;
@@ -207,6 +207,7 @@ int BrisiElement(char* x, Pozicija P)
 {
 	Pozicija Pret, temp;
 	Pret = TraziPrethodnog(x, P);
+	
 	if (Pret == NULL)
 	{
 		printf("Nema prethodnika!");
