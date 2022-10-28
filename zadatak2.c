@@ -93,6 +93,8 @@ int main()
 		printf("\nVasa nova lista:\n");
 		IspisListe(Head->Next);
 	}
+	else
+		printf("Krivi unos");
 
 	printf("\nZelite li naci odredenog korisnika?\nAko zelite, upisite 1.\n");
 	scanf("%d", &a);
@@ -102,7 +104,8 @@ int main()
 		scanf(" %s", prez);
 		PronadiElement(prez, Head);
 	}
-
+	else
+		printf("Krivi unos");
 
 	return EXIT_SUCCESS;
 }
