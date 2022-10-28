@@ -43,7 +43,7 @@ int main()
 		printf("Odabrali ste unos na pocetak liste. Mozete poceti s unosom podataka\n");
 		UnosNaPocetak(Head);
 
-		printf("Zelite li unijeti jos jednu osobu na pocetak liste? \nUkoliko zelite unesite 1, inace upisite 2.\n");
+		printf("Zelite li unijeti jos jednu osobu na pocetak liste? \nUkoliko zelite unesite 1.\n");
 		scanf("%d", &b);
 		if (b == 1)
 		{
@@ -61,7 +61,7 @@ int main()
 		printf("Odabrali ste unos na kraj liste. Mozete poceti s unosom podataka\n");
 		UnosNaKraj(Head);
 
-		printf("Zelite li unijeti jos jednu osobu na kraj liste? \nUkoliko zelite unesite 1, inace upisite 2.\n");
+		printf("Zelite li unijeti jos jednu osobu na kraj liste? \nUkoliko zelite unesite 1.\n");
 		scanf("%d", &b);
 		if (b == 1)
 		{
@@ -75,7 +75,7 @@ int main()
 		printf("Krivi unos");
 	IspisListe(Head->Next);
 
-	printf("Zelite li obrisati korisnike?\nAko zelite, upisite 1\nAko ne zelite, upisite 2\n");
+	printf("Zelite li obrisati korisnike?\nAko zelite, upisite 1\n");
 	scanf("%d", &a);
 	if (a == 1)
 	{
@@ -92,7 +92,7 @@ int main()
 		}
 	}
 
-	printf("Zelite li naci odredenog korisnika?\nAko zelite, upisite 1\nAko ne zelite, upisite 2\n");
+	printf("Zelite li naci odredenog korisnika?\nAko zelite, upisite 1.\n");
 	scanf("%d", &a);
 	if (a == 1)
 	{
