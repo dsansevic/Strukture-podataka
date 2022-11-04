@@ -124,7 +124,7 @@ int main()
 
 	if (izbor == 'K')
 	BrisiSve(Head);
-
+	//free head
 	return EXIT_SUCCESS;
 }
 
@@ -311,6 +311,8 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 		printf("Neuspjesno otvaranje datoteke!\n");
 		return FILE_ERROR;
 	}
+	
+	//sscanf, unos sortiran
 	
 	while (fgets(buff, MAX_LINE, fp) != NULL)
 		puts(buff);
