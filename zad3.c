@@ -75,13 +75,8 @@ int main()
 			printf("Prezime trazene osobe:\n");
 			scanf(" %s", prez);
 			PronadiElement(prez, Head->Next);
-			if (PronadiElement(prez, Head->Next) == EXIT_SUCCESS)
+			if (PronadiElement(prez, Head->Next) != NULL)
 				printf("Korisnik uspjesno pronaden!\n");
-			else
-			{
-				printf("Korisnik nije pronaden!\n");
-				return FILE_ERROR;
-			}
 			break;
 		case 'E':
 			printf("Prezime osobe koju zelite izbrisati:\n");
@@ -379,7 +374,7 @@ int Menu()
 	printf("I) UPIS U DATOTEKU\t\n");
 	printf("J) CITANJE IZ DATOTEKE\t\n");
 	printf("K) KRAJ\t\n");
-	printf("Ako ste izabrali A) ili B), upisite koliki broj korisnika zelite.\t\n");
+	printf("Ako ste izabrali A) ili B), upisite koliki broj korisnika zelite.\t\n\n");
 
 	return EXIT_SUCCESS;
 }
