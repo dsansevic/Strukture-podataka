@@ -197,6 +197,12 @@ int UnosPodataka(Pozicija Q)
 	scanf(" %[^\n]", Q->prezime);
 	printf("Unesite godinu rodenja korisnika:\n");
 	scanf("%d", &Q->godina);
+	
+	while (Q->godina < 1850 || Q->godina > 2023)
+	{
+		printf("Godina je neispravna. Unesite realnu godinu!\n");
+		scanf("%d", &Q->godina);
+	}
 
 	return EXIT_SUCCESS;
 }
