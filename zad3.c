@@ -300,7 +300,7 @@ int UpisUDatoteku(Pozicija P, char* file)
 	}
 	while (P != NULL)
 	{
-		fprintf(fp, "Student:%-20s %-20s, godina %4d\n", P->ime, P->prezime, P->godina);
+		fprintf(fp, "Student:%-20s %-20s, godina: %4d\n", P->ime, P->prezime, P->godina);
 		P = P->Next;
 	}
 	fclose(fp);
