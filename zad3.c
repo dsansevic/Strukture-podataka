@@ -1,8 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
+
 
 #define MAX 50
 #define MAX_LINE 1024
@@ -21,30 +22,30 @@ typedef struct _osoba
 
 
 int Menu();
-int UnosPodataka(Pozicija);
-int PostaviPokazivace(Pozicija, Pozicija);
-int UnosNaPocetak(Pozicija);
-int UnosNaKraj(Pozicija);
+int BrisiSve(Pozicija);
 int IspisListe(Pozicija);
-int BrisiElement(char*, Pozicija);
-int UnosIspred(Pozicija, char*);
+int UnosNaKraj(Pozicija);
+int UnosPodataka(Pozicija);
+int UnosNaPocetak(Pozicija);
+int SortiraniUnos(Pozicija);
 int UnosIza(Pozicija, char*);
+int UnosIspred(Pozicija, char*);
+int BrisiElement(char*, Pozicija);
 int UpisUDatoteku(Pozicija, char*);
 int CitanjeIzDatoteke(Pozicija, char*);
-int SortiraniUnos(Pozicija);
-int BrisiSve(Pozicija);
+int PostaviPokazivace(Pozicija, Pozicija);
+
 Pozicija PronadiElement(char*, Pozicija);
 Pozicija TraziPrethodnog(char*, Pozicija);
-
 
 int main()
 {
 	int a = 0, i = 0;
 	char izbor = ' ';
-	char m = 'K';
 	char prez[MAX] = { 0 };
 	char file[MAX_LINE] = { 0 };
 	char file2[MAX_LINE] = { 0 };
+	
 	Pozicija Head = NULL;
 	Head = (Pozicija)malloc(sizeof(osoba));
 	Head->Next = NULL;
@@ -121,7 +122,7 @@ int main()
 
 		default:
 			printf("Krivi unos slova\n");
-
+			break;
 		}
 	}while (izbor != 'K');
 
@@ -135,6 +136,7 @@ int PostaviPokazivace(Pozicija P, Pozicija Q)
 {
 	Q->Next = P->Next;
 	P->Next = Q;
+	
 	return EXIT_SUCCESS;
 }
 
@@ -183,8 +185,6 @@ Pozicija PronadiElement(char* x, Pozicija P)
 
 	while (P != NULL && strcmp(P->prezime, x))
 		P = P->Next;
-
-	//printf("Podaci korisnika:\nIme: %s\nPrezime: %s\nGodina: %d\n", P->ime, P->prezime, P->godina);
 
 	return P;
 }
@@ -287,7 +287,7 @@ int UpisUDatoteku(Pozicija P, char* file)
 	fp = fopen(file, "w");
 	if (fp == NULL)
 	{
-		printf("Neuspjesno otvaranje datoteke!");
+		printf("Neuspjesno otvaranje datoteke!\n");
 		return FILE_ERROR;
 	}
 	while (P != NULL)
@@ -360,17 +360,17 @@ int BrisiSve(Pozicija P)
 
 int Menu()
 {
-	printf("\nA) UNOS NA POCETAK\t\n");
-	printf("B) UNOS NA KRAJ\t\n");
-	printf("C) ISPIS LISTE\t\n");
-	printf("D) TRAZENJE ELEMENTA\t\n");
-	printf("E) BRISANJE ELEMENTA\t\n");
-	printf("F) DODAVANJE NOVOG ELEMENTA IZA\t\n");
-	printf("G) DODAVANJE NOVOG ELEMENTA ISPRED\t\n");
-	printf("H) SORTIRANJE\t\n");
-	printf("I) UPIS U DATOTEKU\t\n");
-	printf("J) CITANJE IZ DATOTEKE\t\n");
-	printf("K) KRAJ\t\n");
+	printf("\nA  UNOS NA POCETAK\t\n");
+	printf("B  UNOS NA KRAJ\t\n");
+	printf("C  ISPIS LISTE\t\n");
+	printf("D  TRAZENJE ELEMENTA\t\n");
+	printf("E  BRISANJE ELEMENTA\t\n");
+	printf("F  DODAVANJE NOVOG ELEMENTA IZA\t\n");
+	printf("G  DODAVANJE NOVOG ELEMENTA ISPRED\t\n");
+	printf("H  SORTIRANJE\t\n");
+	printf("I  UPIS U DATOTEKU\t\n");
+	printf("J  CITANJE IZ DATOTEKE\t\n");
+	printf("K  KRAJ\t\n");
 
 	return EXIT_SUCCESS;
 }
