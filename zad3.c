@@ -28,7 +28,7 @@ int UnosNaPocetak(Pozicija);
 int SortiraniUnos(Pozicija);
 int UnosIza(Pozicija, char*);
 int UnosIspred(Pozicija, char*);
-int BrisiElement(char*, Pozicija);
+int BrisiElement(Pozicija, char*);
 int UpisUDatoteku(Pozicija, char*);
 int CitanjeIzDatoteke(Pozicija, char*);
 int PostaviPokazivace(Pozicija, Pozicija);
@@ -82,7 +82,7 @@ int main()
 		case 'E':
 			printf("Prezime osobe koju zelite izbrisati:\n");
 			scanf(" %s", prez);
-			BrisiElement(prez, Head);
+			BrisiElement(Head, prez);
 			IspisListe(Head->Next);
 			break;
 		case 'F':
@@ -237,7 +237,7 @@ Pozicija TraziPrethodnog(char* x, Pozicija P)
 		return Pret;
 }
 
-int BrisiElement(char* x, Pozicija P)
+int BrisiElement(Pozicija P, char* x)
 {
 	Pozicija Pret = NULL, temp = NULL;
 	Pret = TraziPrethodnog(x, P);
