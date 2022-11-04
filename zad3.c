@@ -245,7 +245,7 @@ int BrisiElement(char* x, Pozicija P)
 
 	if (Pret == NULL)
 	{
-		printf("Nema prethodnika!");
+		printf("Nema prethodnika!\n");
 		return FILE_ERROR;
 	}
 
@@ -281,7 +281,7 @@ int UnosIza(Pozicija P, char* prez)
 
 	if (X == NULL)
 	{
-		printf("Neuspjesna pretraga");
+		printf("Neuspjesna pretraga\n");
 		return FILE_ERROR;
 	}
 	UnosNaPocetak(X);
@@ -314,7 +314,7 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 	char buff[MAX_LINE] = { 0 };
 	if (fp == NULL)
 	{
-		printf("Neuspjesno otvaranje datoteke!");
+		printf("Neuspjesno otvaranje datoteke!\n");
 		return FILE_ERROR;
 	}
 	
