@@ -258,13 +258,8 @@ int UnosIspred(Pozicija P, char* prez)
 
 	if (Pret == NULL)
 		return FILE_ERROR;
-	else
-	{
-		Pozicija Q = NULL;
-		Q = (Pozicija)malloc(sizeof(osoba));
-		UnosPodataka(Q);
-		PostaviPokazivace(P, Q);
-	}
+	
+	UnosNaPocetak(Pret);
 
 	return EXIT_SUCCESS;
 }
