@@ -360,7 +360,7 @@ int BrisiSve(Pozicija P)
 
 int Menu()
 {
-	printf("A) UNOS NA POCETAK\t\n");
+	printf("\nA) UNOS NA POCETAK\t\n");
 	printf("B) UNOS NA KRAJ\t\n");
 	printf("C) ISPIS LISTE\t\n");
 	printf("D) TRAZENJE ELEMENTA\t\n");
