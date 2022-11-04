@@ -182,7 +182,7 @@ Pozicija PronadiElement(char* x, Pozicija P)
 	while (P != NULL && strcmp(P->prezime, x))
 		P = P->Next;
 
-	printf("Podaci korisnika:\nIme: %s\nPrezime: %s\nGodina: %d\n", P->ime, P->prezime, P->godina);
+	//printf("Podaci korisnika:\nIme: %s\nPrezime: %s\nGodina: %d\n", P->ime, P->prezime, P->godina);
 
 	return P;
 }
