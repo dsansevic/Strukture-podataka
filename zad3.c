@@ -59,11 +59,13 @@ int main()
 		switch (izbor)
 		{
 		case 'A':
+			printf("Koliko korisnika unosite?\n);
 			scanf("%d", &a);
 			for (i = 0; i < a; i++)
 				UnosNaPocetak(Head);
 			break;
 		case 'B':
+			printf("Koliko korisnika unosite?\n);
 			scanf("%d", &a);
 			for (i = 0; i < a; i++)
 				UnosNaKraj(Head);
@@ -369,7 +371,6 @@ int Menu()
 	printf("I) UPIS U DATOTEKU\t\n");
 	printf("J) CITANJE IZ DATOTEKE\t\n");
 	printf("K) KRAJ\t\n");
-	printf("Ako ste izabrali A) ili B), upisite koliki broj korisnika zelite.\t\n\n");
 
 	return EXIT_SUCCESS;
 }
