@@ -111,8 +111,8 @@ int main()
 		case 'J':
 			printf("Unesite ime datoteke:\n");
 			scanf(" %s", file2);
+			printf("\n");
 			CitanjeIzDatoteke(Head->Next, file2);
-			//IspisListe(Head->Next);
 			break;
 				
 		 case 'K':
