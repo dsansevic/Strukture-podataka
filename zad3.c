@@ -235,7 +235,7 @@ Pozicija TraziPrethodnog(char* x, Pozicija P)
 
 int BrisiElement(char* x, Pozicija P)
 {
-	Pozicija Pret, temp;
+	Pozicija Pret = NULL, temp = NULL;
 	Pret = TraziPrethodnog(x, P);
 
 	if (Pret == NULL)
