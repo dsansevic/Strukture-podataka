@@ -39,8 +39,8 @@ Pozicija TraziPrethodnog(char*, Pozicija);
 
 int main()
 {
-	int a = 0, b = 0, i = 0;
-	char izbor;
+	int a = 0, i = 0;
+	char izbor = ' ';
 	char m = 'K';
 	char prez[MAX] = { 0 };
 	char file[MAX_LINE] = { 0 };
@@ -117,14 +117,18 @@ int main()
 			CitanjeIzDatoteke(Head->Next, file2);
 			//IspisListe(Head->Next);
 			break;
+				
+		 case 'K':
+			printf("Kraj programa. Dovidenja!");
+			break;
+
 		default:
 			printf("Krivi unos slova\n");
 
 		}
-	} while (izbor != m);
+	}while (izbor != 'K');
 
-	if (izbor == m)
-		printf("Kraj programa");
+	if (izbor == 'K')
 	BrisiSve(Head);
 
 	return EXIT_SUCCESS;
@@ -374,6 +378,7 @@ int Menu()
 	printf("H) SORTIRANJE\t\n");
 	printf("I) UPIS U DATOTEKU\t\n");
 	printf("J) CITANJE IZ DATOTEKE\t\n");
+	printf("K) KRAJ\t\n");
 	printf("Ako ste izabrali A) ili B), upisite koliki broj korisnika zelite.\t\n");
 
 	return EXIT_SUCCESS;
