@@ -50,7 +50,7 @@ int main()
 	Head = (Pozicija)malloc(sizeof(osoba));
 	Head->Next = NULL;
 
-	printf("VEZANA LISTA, odaberite opciju:\n");
+	printf("\n\t\t**VEZANA LISTA**\n\t\tOdaberite opciju:\n");
 	do
 	{
 		Menu();
@@ -360,17 +360,19 @@ int BrisiSve(Pozicija P)
 
 int Menu()
 {
-	printf("\nA  UNOS NA POCETAK\t\n");
-	printf("B  UNOS NA KRAJ\t\n");
-	printf("C  ISPIS LISTE\t\n");
-	printf("D  TRAZENJE ELEMENTA\t\n");
-	printf("E  BRISANJE ELEMENTA\t\n");
-	printf("F  DODAVANJE NOVOG ELEMENTA IZA\t\n");
-	printf("G  DODAVANJE NOVOG ELEMENTA ISPRED\t\n");
-	printf("H  SORTIRANJE\t\n");
-	printf("I  UPIS U DATOTEKU\t\n");
-	printf("J  CITANJE IZ DATOTEKE\t\n");
-	printf("K  KRAJ\t\n");
+	printf("\t-----------------------------------");
+	printf("\n\tA  UNOS NA POCETAK\t\n");
+	printf("\tB  UNOS NA KRAJ\t\n");
+	printf("\tC  ISPIS LISTE\t\n");
+	printf("\tD  TRAZENJE ELEMENTA\t\n");
+	printf("\tE  BRISANJE ELEMENTA\t\n");
+	printf("\tF  DODAVANJE NOVOG ELEMENTA IZA\t\n");
+	printf("\tG  DODAVANJE NOVOG ELEMENTA ISPRED\t\n");
+	printf("\tH  SORTIRANJE\t\n");
+	printf("\tI  UPIS U DATOTEKU\t\n");
+	printf("\tJ  CITANJE IZ DATOTEKE\t\n");
+	printf("\tK  KRAJ\t\n");
+	printf("\t-----------------------------------\n\n");
 
 	return EXIT_SUCCESS;
 }
