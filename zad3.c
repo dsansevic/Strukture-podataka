@@ -285,7 +285,7 @@ int UnosIza(Pozicija P, char* prez)
 int UpisUDatoteku(Pozicija P, char* file)
 {
 	FILE* fp = NULL;
-	fp = fopen(file, "w");
+	fp = fopen(file, "a");
 	if (fp == NULL)
 	{
 		printf("Neuspjesno otvaranje datoteke!\n");
