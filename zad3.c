@@ -312,10 +312,18 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 		return FILE_ERROR;
 	}
 	
-	//sscanf, unos sortiran
+	//sscanf, unos sortiran ako vrati 3 nastavlja pretrazivat 
 	
-	while (fgets(buff, MAX_LINE, fp) != NULL)
-		puts(buff);
+	while (!feof(fp)) {
+		Pozicija q = // alociraj;
+		// provjeri jel alocirano
+		fgets....
+	
+		prvo vidi oće li ić sscanf %s %s %d
+		ako ne, vidi oće li ić sscanf %s %s %s %d ....
+		
+		UnesiSortirano(P, q);
+	}
 
 	fclose(fp);
 	
