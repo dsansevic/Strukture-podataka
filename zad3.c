@@ -59,13 +59,13 @@ int main()
 		switch (izbor)
 		{
 		case 'A':
-			printf("Koliko korisnika unosite?\n);
+			printf("Koliko korisnika unosite?\n");
 			scanf("%d", &a);
 			for (i = 0; i < a; i++)
 				UnosNaPocetak(Head);
 			break;
 		case 'B':
-			printf("Koliko korisnika unosite?\n);
+			printf("Koliko korisnika unosite?\n");
 			scanf("%d", &a);
 			for (i = 0; i < a; i++)
 				UnosNaKraj(Head);
