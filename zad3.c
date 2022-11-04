@@ -4,7 +4,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-
 #define MAX 50
 #define MAX_LINE 1024
 #define FILE_ERROR -1
@@ -19,7 +18,6 @@ typedef struct _osoba
 	int godina;
 	Pozicija Next;
 }osoba;
-
 
 int Menu();
 int BrisiSve(Pozicija);
@@ -114,12 +112,10 @@ int main()
 			scanf(" %s", file2);
 			printf("\n");
 			CitanjeIzDatoteke(Head->Next, file2);
-			break;
-				
+			break;	
 		 case 'K':
 			printf("Kraj programa. Dovidenja!");
 			break;
-
 		default:
 			printf("Krivi unos slova\n");
 			break;
@@ -170,8 +166,8 @@ int UnosNaKraj(Pozicija P)
 
 	while (P->Next != NULL)
 		P = P->Next;
-
 	PostaviPokazivace(P, Q);
+	
 	return EXIT_SUCCESS;
 }
 
@@ -207,7 +203,6 @@ int UnosPodataka(Pozicija Q)
 	return EXIT_SUCCESS;
 }
 
-
 int IspisListe(Pozicija P)
 {
 	if (P == NULL)
@@ -221,6 +216,7 @@ int IspisListe(Pozicija P)
 		printf("Ime: %s\nPrezime: %s\nGodina rodenja: %d\n", P->ime, P->prezime, P->godina);
 		P = P->Next;
 	}
+	
 	return EXIT_SUCCESS;
 }
 
@@ -266,7 +262,6 @@ int UnosIspred(Pozicija P, char* prez)
 
 	if (Pret == NULL)
 		return FILE_ERROR;
-	
 	UnosNaPocetak(Pret);
 
 	return EXIT_SUCCESS;
@@ -302,6 +297,7 @@ int UpisUDatoteku(Pozicija P, char* file)
 		P = P->Next;
 	}
 	fclose(fp);
+	
 	return EXIT_SUCCESS;
 }
 
@@ -320,9 +316,9 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 		puts(buff);
 
 	fclose(fp);
+	
 	return EXIT_SUCCESS;
 }
-
 
 int SortiraniUnos(Pozicija P)
 {
@@ -348,7 +344,6 @@ int SortiraniUnos(Pozicija P)
 		}
 		end = j;
 	}
-
 	return EXIT_SUCCESS;
 }
 
