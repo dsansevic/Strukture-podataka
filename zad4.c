@@ -167,7 +167,7 @@ int UnesiSortirano(Pozicija P, Pozicija Q)
 		P = P->Next;
 	}
 	PostaviPokazivace(P, Q);
-
+	//ako su suprotni predznaci, ako se ponavljaju eksp
 	return EXIT_SUCCESS;
 }
 
