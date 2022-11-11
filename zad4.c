@@ -229,12 +229,14 @@ int PomnoziPolinome(Pozicija P1, Pozicija P2, Pozicija P)
 {
 	Pozicija poz1 = P1;
 	Pozicija poz2 = P2;
+	Pozicija p3 = NULL;
+	p3 = (Pozicija)malloc(sizeof(Polinom));
 	while (poz1 != NULL)
 	{
 		poz2 = P2;
 		while (poz2 != NULL)
 		{
-			poz1 = NoviUnos(poz1->koef * poz2->koef, poz1->exp + poz2->exp);
+			p3 = NoviUnos(poz1->koef * poz2->koef, poz1->exp + poz2->exp);
 			UnesiSortirano(P, poz1);
 			poz2 = poz2->Next;
 		}
