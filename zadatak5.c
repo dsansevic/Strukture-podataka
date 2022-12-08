@@ -141,13 +141,19 @@ int Push(Position P, int newElement)
 
 int Pop(Position P)
 {
-    int x = 0;
-    Position temp = NULL;
-    temp = P->Next;
-    x = temp->element;
-    P->Next = temp->Next;
-    free(temp);
-    return x;
+    if (P->Next == NULL) {
+        printf("The list is empty!\n");
+        return ERROR;
+    }
+    else {
+        int x = 0;
+        Position temp = NULL;
+        temp = P->Next;
+        x = temp->e}nt;
+        P->Next = temp->Next;
+        free(temp);
+        return x;
+    }
 }
 
 int InsertAfter(Position P, Position Q)
