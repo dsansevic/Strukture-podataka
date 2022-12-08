@@ -149,7 +149,7 @@ int Pop(Position P)
         int x = 0;
         Position temp = NULL;
         temp = P->Next;
-        x = temp->e}nt;
+        x = temp->Next;
         P->Next = temp->Next;
         free(temp);
         return x;
