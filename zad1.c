@@ -48,7 +48,7 @@ int main()
     n = PrintStudents(result, st, max);
     free(st);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 
@@ -70,6 +70,7 @@ int countStudentsFromFile(char* filename)
         if (strcmp(buffer, "\n") != 0)
             count++;
     }
+    return EXIT_SUCCESS;
 }
 int EnterStudents(char* filename, int number, STUDENT* s)
 {
