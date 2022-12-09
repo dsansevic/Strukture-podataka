@@ -74,7 +74,7 @@ int CalculatePostfix(Position Head, int *res)
         }
         else
         {
-            char ch;
+            char ch = ' ';
             sscanf(b, "%c%n", &ch, &n);
             switch (ch)
             {
