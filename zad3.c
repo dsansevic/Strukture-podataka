@@ -304,13 +304,27 @@ int UpisUDatoteku(Pozicija P, char* file)
 int CitanjeIzDatoteke(Pozicija P, char* file)
 {
 	FILE* fp = NULL;
+	int pom = 0;
 	fp = fopen(file, "r");
 	char buff[MAX_LINE] = { 0 };
+	char* b = buff;
 	if (fp == NULL)
 	{
 		printf("Neuspjesno otvaranje datoteke!\n");
 		return FILE_ERROR;
 	}
+	Pozicija Q = NULL;
+	fgets(b, MAX_LINE, fp);
+    
+    while (strlen(b) > 0)
+    {
+        pom = sscanf(b, "%s %s %d %n", &, &n);
+        if(pom == 3) SortiraniUnos(P,Q);
+	
+	else { pom = ssacnf(b, %s %s %s %n". 
+		
+	
+       
 	
 	//sscanf, unos sortiran ako vrati 3 nastavlja pretrazivat 
 	
