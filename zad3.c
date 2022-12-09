@@ -58,15 +58,15 @@ int main()
 		switch (izbor)
 		{
 		case 'A':
-			printf("Koliko korisnika unosite?\n");
+			/*printf("Koliko korisnika unosite?\n");
 			scanf("%d", &a);
-			for (i = 0; i < a; i++)
+			for (i = 0; i < a; i++)*/
 				UnosNaPocetak(Head);
 			break;
 		case 'B':
-			printf("Koliko korisnika unosite?\n");
+			/*printf("Koliko korisnika unosite?\n");
 			scanf("%d", &a);
-			for (i = 0; i < a; i++)
+			for (i = 0; i < a; i++)*/
 				UnosNaKraj(Head);
 			break;
 		case 'C':
@@ -304,7 +304,8 @@ int UpisUDatoteku(Pozicija P, char* file)
 int CitanjeIzDatoteke(Pozicija P, char* file)
 {
 	FILE* fp = NULL;
-	int pom = 0;
+	int pom = 0, n=0, godina = 0;
+	char ime[MAX] = { 0 }, prezime[MAX] = { 0 }, pomocna[MAX] = { 0 };
 	fp = fopen(file, "r");
 	char buff[MAX_LINE] = { 0 };
 	char* b = buff;
@@ -314,20 +315,49 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 		return FILE_ERROR;
 	}
 	Pozicija Q = NULL;
+	Q = (Pozicija)malloc(sizeof(osoba));
+
+	if (Q == NULL)
+	{
+		printf("Greska u alociranju memorije!");
+		return FILE_ERROR;
+	}
+	
 	fgets(b, MAX_LINE, fp);
     
-    while (strlen(b) > 0)
-    {
-        pom = sscanf(b, "%s %s %d %n", &, &n);
-        if(pom == 3) SortiraniUnos(P,Q);
-	
-	else { pom = ssacnf(b, %s %s %s %n". 
-		
+ 
+	while (strlen(b) > 0)
+	{
+		pom = sscanf(b, "%s %s %d %n", ime, prezime, &godina, &n);
+		if (pom == 3) {
+			Q->ime = ime;
+			Q->prezime = prezime;
+			Q->godina = godina;
+			PostaviPokazivace(P, Q);
+			SortiraniUnos(P);
+
+			b += n;
+		}
+
+
+		else if (sscanf(b, " % s % s % s % n", ime, pomocna, prezime, &godina, &n) == 4)
+		{
+			strcat(pomocna, " ");
+			strcat(ime, pomocna);
+
+			Q->ime = ime;
+			Q->prezime = prezime;
+			Q->godina = godina;
+			PostaviPokazivace(P, Q);
+			SortiraniUnos(P);
+
+			b += n;
+		}
+	}
 	
        
 	
-	//sscanf, unos sortiran ako vrati 3 nastavlja pretrazivat 
-	
+	/*sscanf, unos sortiran ako vrati 3 nastavlja pretrazivat 
 	while (!feof(fp)) {
 		Pozicija q = // alociraj;
 		// provjeri jel alocirano
@@ -337,7 +367,7 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 		ako ne, vidi oće li ić sscanf %s %s %s %d ....
 		
 		UnesiSortirano(P, q);
-	}
+	} */
 
 	fclose(fp);
 	
