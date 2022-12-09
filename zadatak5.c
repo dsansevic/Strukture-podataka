@@ -37,6 +37,12 @@ int main()
 
 int CalculatePostfix(Position Head, int *res)
 {
+    int n = 0, i = 0, pom = 0;
+    int first = 0, second = 0, result = 0;
+    char filename[MAX_FILE_NAME] = { 0 };
+    char buffer[MAX] = { 0 };
+    char* b = buffer;
+    
     Head = (Position)malloc(sizeof(node));
     if (Head == NULL)
     {
@@ -46,11 +52,7 @@ int CalculatePostfix(Position Head, int *res)
 
     Head->Next = NULL;
     FILE* fp = NULL;
-    int n = 0, i = 0;
-    int first = 0, second = 0, result = 0;
-    char filename[MAX_FILE_NAME] = { 0 };
-    char buffer[MAX] = { 0 };
-    char* b = buffer;
+    
 
     printf("Insert filename:\n");
     scanf(" %s", filename);
@@ -65,8 +67,8 @@ int CalculatePostfix(Position Head, int *res)
     while (strlen(b) > 0)
     {
         int br = 0;
-        sscanf(b, "%d%n", &br, &n);
-        if(br)
+        pom = sscanf(b, "%d %n ", &br, &n);
+        if (pom == 1)
         {
             Push(Head, br);
             b += n;
@@ -75,7 +77,7 @@ int CalculatePostfix(Position Head, int *res)
         else
         {
             char ch = ' ';
-            sscanf(b, "%c%n", &ch, &n);
+            if (sscanf(b, "%c %n", &ch, &n) == 1)
             switch (ch)
             {
                 case '+':
