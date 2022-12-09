@@ -12,33 +12,33 @@ struct _node;
 typedef struct _node* Position;
 typedef struct _node
 {
-    int element;
+    float element;
     Position Next;
 }node;
 
 int Pop(Position);
-int Push(Position, int);
+int Push(Position, float);
 int InsertAfter(Position, Position);
-int CalculatePostfix(Position, int*);
+int CalculatePostfix(Position, float*);
 
 int main()
 {
-    int a = 0;
+    float a = 0.0f;
     node Head;
-    Head.element = 0;
+    Head.element = 0.0f;
     Head.Next = NULL;
     CalculatePostfix(&Head, &a);
     
-    printf("Result is: %d", a);
+    printf("Result is: %f", a);
     return EXIT_SUCCESS;
 }
 
 //6523+8*+3+*
 
-int CalculatePostfix(Position Head, int *res)
+int CalculatePostfix(Position Head, float *res)
 {
     int n = 0, i = 0, pom = 0;
-    int first = 0, second = 0, result = 0;
+    float first = 0.0f, second = 0.0f, result = 0.0f;
     char filename[MAX_FILE_NAME] = { 0 };
     char buffer[MAX] = { 0 };
     char* b = buffer;
@@ -131,7 +131,7 @@ int CalculatePostfix(Position Head, int *res)
     return EXIT_SUCCESS;
 }
 
-int Push(Position P, int newElement)
+int Push(Position P, float newElement)
 {
     Position Q = NULL;
     Q = (Position)malloc(sizeof(node));
@@ -152,7 +152,7 @@ int Pop(Position P)
         return ERROR;
     }
     else {
-        int x = 0;
+        float x = 0.0f;
         Position temp = NULL;
         temp = P->Next;
         x = temp->element;
