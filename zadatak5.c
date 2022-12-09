@@ -146,7 +146,7 @@ int Push(Position P, int newElement)
 int Pop(Position P)
 {
     if (P->Next == NULL) {
-        printf("The list is empty!\n");
+        printf("The stack is empty!\n");
         return ERROR;
     }
     else {
