@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define EXIT_SUCCESS 0
-#define ERROR -1
-#define MAX_FILE_NAME 256
 #define MAX 50
+#define ERROR -1
+#define EXIT_SUCCESS 0
+#define MAX_FILE_NAME 256
 
 struct _node;
 typedef struct _node* Position;
@@ -18,8 +18,8 @@ typedef struct _node
 
 int Pop(Position);
 int Push(Position, int);
-int CalculatePostfix(Position, int*);
 int InsertAfter(Position, Position);
+int CalculatePostfix(Position, int*);
 
 int main()
 {
@@ -28,7 +28,7 @@ int main()
     Head.element = 0;
     Head.Next = NULL;
     CalculatePostfix(&Head, &a);
-
+    
     printf("Result is: %d", a);
     return EXIT_SUCCESS;
 }
