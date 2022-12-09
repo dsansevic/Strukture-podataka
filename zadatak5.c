@@ -115,6 +115,10 @@ int CalculatePostfix(Position Head, int *res)
                     Push(Head, result);
                     break;
                 }
+                default:
+                    printf("\nInvalid input.\n");
+                    break;
+                }
             }
             b += n;
             printf("%c ", ch);
