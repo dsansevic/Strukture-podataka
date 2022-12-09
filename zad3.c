@@ -314,22 +314,23 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 		printf("Neuspjesno otvaranje datoteke!\n");
 		return FILE_ERROR;
 	}
-	Pozicija Q = NULL;
-	Q = (Pozicija)malloc(sizeof(osoba));
-
-	if (Q == NULL)
-	{
-		printf("Greska u alociranju memorije!");
-		return FILE_ERROR;
-	}
 	
 	fgets(b, MAX_LINE, fp);
-    
  
 	while (strlen(b) > 0)
 	{
 		pom = sscanf(b, "%s %s %d %n", ime, prezime, &godina, &n);
 		if (pom == 3) {
+			Pozicija Q = NULL;
+			Q = (Pozicija)malloc(sizeof(osoba));
+
+			if (Q == NULL)
+			{
+				printf("Greska u alociranju memorije!");
+				return FILE_ERROR;
+			}
+	
+			
 			Q->ime = ime;
 			Q->prezime = prezime;
 			Q->godina = godina;
@@ -342,6 +343,15 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 
 		else if (sscanf(b, " % s % s % s % n", ime, pomocna, prezime, &godina, &n) == 4)
 		{
+			Pozicija Q = NULL;
+			Q = (Pozicija)malloc(sizeof(osoba));
+
+			if (Q == NULL)
+			{
+				printf("Greska u alociranju memorije!");
+				return FILE_ERROR;
+			}
+	
 			strcat(pomocna, " ");
 			strcat(ime, pomocna);
 
