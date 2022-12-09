@@ -34,6 +34,7 @@ int main()
 }
 
 //6523+8*+3+*
+//69*0+6-70*+3-1-
 
 int CalculatePostfix(Position Head, float *res)
 {
