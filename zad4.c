@@ -22,8 +22,7 @@ int IspisListe(Pozicija);
 int UnosNaPocetak(Pozicija);
 int UnesiSortirano(Pozicija, Pozicija);
 int PostaviPokazivace(Pozicija, Pozicija);
-int CitajIzDatotekePrviRed(char*, Pozicija);
-int CitajIzDatotekeDrugiRed(char*, Pozicija);
+int CitajIzDatoteke(char*, Pozicija);
 int ZbrojiPolinome(Pozicija, Pozicija, Pozicija);
 int PomnoziPolinome(Pozicija, Pozicija, Pozicija);
 
@@ -43,11 +42,7 @@ int main()
 	Head4 = Alokacija();
 	printf("Unesite ime datoteke:\n");
 	scanf(" %s", file);
-	CitajIzDatotekePrviRed(file, Head1);
-	IspisListe(Head1->Next);
-	printf("\n");
-	CitajIzDatotekeDrugiRed(file, Head2);
-	IspisListe(Head2->Next);
+	CitajIzDatoteke(file, Head1);
 	ZbrojiPolinome(Head1->Next, Head2->Next, Head3->Next);
 	printf("Zbrojeni polinomi:\n");
 	IspisListe(Head3->Next);
@@ -81,7 +76,7 @@ Pozicija Alokacija()
 	return P;
 }
 
-int CitajIzDatotekePrviRed(char* imeDat, Pozicija P1)
+int CitajIzDatoteke(char* imeDat, Pozicija P1)
 {
 	int koef = 0, exp = 0, pom = 0, brojac = 0;
 	char buffer[MAX_LINE] = { 0 };
@@ -120,54 +115,38 @@ int CitajIzDatotekePrviRed(char* imeDat, Pozicija P1)
 	return EXIT_SUCCESS;
 }
 
-int CitajIzDatotekeDrugiRed(char* imeDat, Pozicija P2)
-{
-	int koef = 0, exp = 0, pom = 0, brojac = 0;
-	char buffer[MAX_LINE] = { 0 };
-	char* pok_buffer = buffer;
-
-	FILE* fp = NULL;
-	fp = fopen(imeDat, "r");
-
-	if (fp == NULL)
-	{
-		printf("Greska pri otvaranju datoteke!\n");
-		return FILE_ERROR;
-	}
-	fscanf(fp, "%*[^\n]\n");
-	fgets(pok_buffer, MAX_LINE, fp);
-
-	while (strlen(pok_buffer) != 0) {
-		pom = sscanf(pok_buffer, " %d %d %n", &koef, &exp, &brojac);
-		if (pom == 2) {
-			Pozicija ClanListe = NULL;
-			ClanListe = (Pozicija)malloc(sizeof(Polinom));
-			ClanListe->koef = koef;
-			ClanListe->exp = exp;
-			ClanListe->Next = NULL;
-			UnesiSortirano(P2, ClanListe);
-			printf("%d %d\n", ClanListe->koef, ClanListe->exp);
-		}
-		else {
-			printf("Greska u datoteci!");
-		}
-
-		pok_buffer += brojac;
-	}
-
-
-	return EXIT_SUCCESS;
-}
-
-
 int UnesiSortirano(Pozicija P, Pozicija Q)
 {
+	Pozicija tmp = NULL;
+	tmp = (Pozicija)malloc(sizeof(Polinom));
+	if(tmp == NULL)
+	{
+		printf("Greska u alociranju memorije!");
+		return FILE_ERROR;
+	}
+	
+	tmp->Next = NULL;
+	if(P->koef == 0)
+	{
+		printf("Koeficijent je 0.");
+		return EXIT_SUCCESS;
+	}
+	
 	while (P->Next != NULL && P->Next->exp > Q->exp)
 	{
 		P = P->Next;
 	}
-	PostaviPokazivace(P, Q);
-	//ako su suprotni predznaci, ako se ponavljaju eksp
+	
+	if(P->Next != NULL && P->Next->exp == Q->Next->exp)
+	{
+		P->Next->koef += Q->Next->koef;
+	}
+	
+	else
+	{
+		NoviUnos(tmp->koef, tmp->exp);
+		PostaviPokazivace(P, Q);
+	}
 	return EXIT_SUCCESS;
 }
 
