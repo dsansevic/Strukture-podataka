@@ -25,7 +25,7 @@ int IspisListe(Pozicija);
 int UnosNaKraj(Pozicija);
 int UnosPodataka(Pozicija);
 int UnosNaPocetak(Pozicija);
-int SortiraniUnos(Pozicija);
+int BubbleSort(Pozicija);
 int UnosIza(Pozicija, char*);
 int UnosIspred(Pozicija, char*);
 int BrisiElement(Pozicija, char*);
@@ -98,7 +98,7 @@ int main()
 			IspisListe(Head->Next);
 			break;
 		case 'H':
-			SortiraniUnos(Head);
+			BubbleSort(Head);
 			IspisListe(Head->Next);
 			break;
 		case 'I':
@@ -384,7 +384,7 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 	return EXIT_SUCCESS;
 }
 
-int SortiraniUnos(Pozicija P)
+int BubbleSort(Pozicija P)
 {
 	Pozicija j = NULL, prev_j = NULL, temp = NULL, end = NULL;
 	while (P->Next != end)
