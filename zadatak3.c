@@ -315,7 +315,13 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 		return FILE_ERROR;
 	}
 	
-	fgets(b, MAX_LINE, fp);
+	while (P != NULL)
+	{
+		fscanf(fp, "Student:%s %s, godina %d", P->ime, P->prezime, &P->godina);
+		P = P->Next;
+	}
+	
+	/*fgets(b, MAX_LINE, fp);
  
 	while (strlen(b) > 0)
 	{
@@ -331,17 +337,16 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 			}
 	
 			
-			Q->ime = ime;
-			Q->prezime = prezime;
+			strcpy(Q->ime, ime);
+			strcpy(Q->prezime, prezime);
 			Q->godina = godina;
 			PostaviPokazivace(P, Q);
-			SortiraniUnos(P);
 
 			b += n;
 		}
 
 
-		else if (sscanf(b, " % s % s % s % n", ime, pomocna, prezime, &godina, &n) == 4)
+		else if (sscanf(b, " % s % s % s %d % n", ime, pomocna, prezime, &godina, &n) == 4)
 		{
 			Pozicija Q = NULL;
 			Q = (Pozicija)malloc(sizeof(osoba));
@@ -355,29 +360,14 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 			strcat(pomocna, " ");
 			strcat(ime, pomocna);
 
-			Q->ime = ime;
-			Q->prezime = prezime;
+			strcpy(Q->ime, ime);
+			strcpy(Q->prezime, prezime);
 			Q->godina = godina;
 			PostaviPokazivace(P, Q);
-			SortiraniUnos(P);
 
 			b += n;
 		}
-	}
-	
-       
-	
-	/*sscanf, unos sortiran ako vrati 3 nastavlja pretrazivat 
-	while (!feof(fp)) {
-		Pozicija q = // alociraj;
-		// provjeri jel alocirano
-		fgets....
-	
-		prvo vidi oće li ić sscanf %s %s %d
-		ako ne, vidi oće li ić sscanf %s %s %s %d ....
-		
-		UnesiSortirano(P, q);
-	} */
+	}*/
 
 	fclose(fp);
 	
