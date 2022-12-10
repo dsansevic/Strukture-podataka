@@ -126,12 +126,12 @@ int UnesiSortirano(Pozicija P, Pozicija Q)
 	}
 	
 	tmp->Next = NULL;
-	if(P->koef == 0)
+	if(P->koef == 0 || (P->koef + Q->koef == 0))
 	{
 		printf("Koeficijent je 0.");
 		return EXIT_SUCCESS;
 	}
-	
+
 	while (P->Next != NULL && P->Next->exp > Q->exp)
 	{
 		P = P->Next;
