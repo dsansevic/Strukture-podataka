@@ -357,7 +357,7 @@ int CitanjeIzDatoteke(Pozicija P, char* file)
 				return FILE_ERROR;
 			}
 	
-			strcat(pomocna, " ");
+			strcat(ime, " ");
 			strcat(ime, pomocna);
 
 			strcpy(Q->ime, ime);
