@@ -1,6 +1,6 @@
-/* zadatak7.cpp :Napisati program koji pomoæu vezanih listi(stabala) predstavlja
-strukturu direktorija. Omoguæiti unos novih direktorija i pod - direktorija,
-ispis sadržaja direktorija i povratak u prethodni direktorij.*/
+/* zadatak7.cpp :Napisati program koji pomoÄ‡u vezanih listi(stabala) predstavlja
+strukturu direktorija. OmoguÄ‡iti unos novih direktorija i pod - direktorija,
+ispis sadrÅ¾aja direktorija i povratak u prethodni direktorij.*/
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
@@ -25,40 +25,62 @@ typedef struct Stack {
     StackPosition Next;
 } stack;
 
+int Menu(Position, Position, StackPosition, StackPosition);
 int PrintDirectory(Position);
 int DeleteAll(Position);
-Position ReturnToPrevious(StackPosition);
 int MakeDirectory(Position, char*);
 int InsertSort(Position, Position);
 int Push(Position, StackPosition);
-Position Pop(StackPosition);
 int InsertAfter(StackPosition, StackPosition);
-Position FindDirectory(Position, char*);
+Position Pop(StackPosition);
+Position FindDirectory(Position, char*, StackPosition);
+Position ReturnToPrevious(StackPosition);
 
 int main() {
     directory Root, Current;
     Root.child = 0;
     Root.sibling = 0;
+    stack prev, head;
 
-    char command[MAX] = { 0 }, directoryName[MAX] = { 0 };
+    Menu(&Root);
+    return EXIT_SUCCESS;
+}
 
-    do {
+ int Menu(Position Root, Position curr, StackPosition previous, Stackposition st)
+ {
+     char command[MAX] = { 0 }, directoryName[MAX] = { 0 };
+
+     printf("Insert command.\n");
+     while (strcmp(command, "exit") != 0){
+
         scanf(" %s %s", command, directoryName);
 
         if (strcmp(command, "md") == 0)
-            MakeDirectory(&Root, directoryName);
+        {
+            MakeDirectory(Root, directoryName);
+            printf("Directory %s has been made!\n", directoryName);
+        }
 
         else if (strcmp(command, "dir") == 0)
-            PrintDirectory(&Root);
+            PrintDirectory(Root);
 
-        //else if (strcmp(command, "cd") == 0)
-         // FindDirectory(&Root, directoryName);
+        else if (strcmp(command, "cd") == 0)
+        {
+            Current = FindDirectory(current, name);
+            printf("You are now in %s directory\n", directoryName);
 
-        else if (strcmp(command, "cd dir") == 0);
-    }while (strcmp(command, "exit") != 0);
+        }
+        else if (strcmp(command, "cd dir") == 0)
+            previous = ReturnToPrevious(st);
 
-        return 0;
-}
+        else {
+            printf("%s : The term '%s' is not recognized as the name of a cmdlet, function, script file, or operable program.", directoryName, directoryName)
+            printf("Check the spelling of the name, or if a path was included, verify that the path is correct and try again.\n");
+        }
+    }
+
+     DeleteAll(&Root);
+     }
 
 int MakeDirectory(Position current, char* name) {
     Position NewDirectory;
@@ -113,16 +135,15 @@ int PrintDirectory(Position current) {
 
 int Push(Position current, StackPosition s_head) {
     StackPosition NewEl = NULL;
-    ;
-    StackPosition tmp = s_head;
+
     NewEl = (StackPosition)malloc(sizeof(stack));
     if (NewEl == NULL) {
         printf("Allocation error!");
         return FILE_ERROR;
     }
     NewEl->dir = current;
-    NewEl->Next = tmp->Next;
-    tmp->Next = NewEl;
+    NewEl->Next = s_head->Next;
+    s_head->Next = NewEl;
 
     return EXIT_SUCCESS;
 }
@@ -158,13 +179,21 @@ int DeleteAll(Position P) {
 
 Position ReturnToPrevious(StackPosition s) { return Pop(s); }
 
-Position FindDirectory(Position current, char* name) {
+Position FindDirectory(Position current, char* name, StackPosition P) {
     current = current->child;
     if (strcmp(current->Name, name) == 0)
         return current;
 
     while (current != NULL && strcmp(current->Name, name) != 0)
         current = current->sibling;
+
+    if (current == NULL || strcmp(current->Name, name) != 0)
+    {
+        printf("Directory not found!\n");
+        return current;
+    }
+
+    else push(current, P);
 
     return current;
 }
