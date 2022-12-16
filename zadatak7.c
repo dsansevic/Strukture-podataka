@@ -38,11 +38,14 @@ Position ReturnToPrevious(StackPosition);
 
 int main() {
     directory Root, Current;
-    Root.child = 0;
-    Root.sibling = 0;
+    Root.child = NULL;
+    Root.sibling = NULL;
+    Current.child = NULL;
     stack prev, head;
+    prev.Next = NULL;
+    head.Next = NULL;
 
-    Menu(&Root);
+    Menu(&Root, &Current, &prev, &head);
     return EXIT_SUCCESS;
 }
 
