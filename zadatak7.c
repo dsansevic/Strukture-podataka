@@ -25,7 +25,7 @@ typedef struct Stack {
     StackPosition Next;
 } stack;
 
-int Menu(Position, Position, StackPosition, StackPosition);
+int Menu(Position, Position, Position, StackPosition);
 int PrintDirectory(Position);
 int DeleteAll(Position);
 int MakeDirectory(Position, char*);
@@ -37,24 +37,28 @@ Position FindDirectory(Position, char*, StackPosition);
 Position ReturnToPrevious(StackPosition);
 
 int main() {
-    directory Root, Current;
+    directory Root, Current, prev;
     Root.child = NULL;
     Root.sibling = NULL;
     Current.child = NULL;
-    stack prev, head;
-    prev.Next = NULL;
+    Current.sibling = NULL;
+    prev.child = NULL;
+    prev.sibling = NULL;
+    stack head;
     head.Next = NULL;
+    Position p_Root = &Root;
 
-    Menu(&Root, &Current, &prev, &head);
+    Menu(p_Root, &Current, &prev, &head);
     return EXIT_SUCCESS;
 }
 
- int Menu(Position Root, Position curr, StackPosition previous, Stackposition st)
- {
-     char command[MAX] = { 0 }, directoryName[MAX] = { 0 };
+int Menu(Position Root, Position curr, Position previous, StackPosition st)
+{
+    char command[MAX] = { 0 }, directoryName[MAX] = { 0 };
+    
 
-     printf("Insert command.\n");
-     while (strcmp(command, "exit") != 0){
+    printf("Insert command:\n");
+    do {
 
         scanf(" %s %s", command, directoryName);
 
@@ -69,7 +73,7 @@ int main() {
 
         else if (strcmp(command, "cd") == 0)
         {
-            Current = FindDirectory(current, name);
+            curr = FindDirectory(Root, directoryName, st);
             printf("You are now in %s directory\n", directoryName);
 
         }
@@ -77,13 +81,14 @@ int main() {
             previous = ReturnToPrevious(st);
 
         else {
-            printf("%s : The term '%s' is not recognized as the name of a cmdlet, function, script file, or operable program.", directoryName, directoryName)
+            printf("%s : The term '%s' is not recognized as the name of a cmdlet, function, script file, or operable program.", directoryName, directoryName);
             printf("Check the spelling of the name, or if a path was included, verify that the path is correct and try again.\n");
         }
-    }
+    } while (strcmp(command, "exit") != 0);
 
-     DeleteAll(&Root);
-     }
+    DeleteAll(Root);
+    return EXIT_SUCCESS;
+}
 
 int MakeDirectory(Position current, char* name) {
     Position NewDirectory;
@@ -108,11 +113,13 @@ int MakeDirectory(Position current, char* name) {
             current->child = NewDirectory;
         }
         else
+        {
             current = current->child;
-        while (strcmp(current->sibling->Name, name) < 0)
-            current = current->sibling;
-        NewDirectory->sibling = current->sibling;
-        current->sibling = NewDirectory;
+            while (strcmp(current->sibling->Name, name) < 0)
+                current = current->sibling;
+            NewDirectory->sibling = current->sibling;
+            current->sibling = NewDirectory;
+        }
     }
 
     return EXIT_SUCCESS;
@@ -123,12 +130,14 @@ int PrintDirectory(Position current) {
         printf("This directory is empty!\n");
         return EXIT_SUCCESS;
     }
-
-    printf("Directory of C:\\users\%s\n\n", current->Name);
     current = current->child;
+    printf("Directory of C:\\users %s\n\n", current->Name);
+    //printf("Directory of C: users %s\n", current->Name);
+    
 
     printf("%s\n", current->Name);
     while (current->sibling != NULL) {
+        //dodaj Mode                 LastWriteTime         Length Name
         printf("%s\n", current->sibling->Name);
         current = current->sibling;
     }
@@ -196,7 +205,7 @@ Position FindDirectory(Position current, char* name, StackPosition P) {
         return current;
     }
 
-    else push(current, P);
+    else Push(current, P);
 
     return current;
 }
