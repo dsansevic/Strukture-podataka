@@ -28,12 +28,12 @@ typedef struct Stack {
 int Menu(Position, Position, Position, StackPosition);
 int PrintDirectory(Position);
 int DeleteAll(Position);
-int MakeDirectory(Position, char*);
 int InsertSort(Position, Position);
 int Push(Position, StackPosition);
 int InsertAfter(StackPosition, StackPosition);
 Position Pop(StackPosition);
 Position FindDirectory(Position, char*, StackPosition);
+Position MakeDirectory(Position, char*);
 Position ReturnToPrevious(StackPosition);
 
 int main() {
@@ -64,7 +64,7 @@ int Menu(Position Root, Position curr, Position previous, StackPosition st)
 
         if (strcmp(command, "md") == 0)
         {
-            MakeDirectory(Root, directoryName);
+            Root = MakeDirectory(Root, directoryName);
             printf("Directory %s has been made!\n", directoryName);
         }
 
@@ -90,13 +90,13 @@ int Menu(Position Root, Position curr, Position previous, StackPosition st)
     return EXIT_SUCCESS;
 }
 
-int MakeDirectory(Position current, char* name) {
+Position MakeDirectory(Position current, char* name) {
     Position NewDirectory;
     NewDirectory = (Position)malloc(sizeof(directory));
 
     if (NewDirectory == NULL) {
         printf("Memory allocation error!\n");
-        return FILE_ERROR;
+        return NULL;
     }
 
     strcpy(NewDirectory->Name, name);
@@ -105,7 +105,7 @@ int MakeDirectory(Position current, char* name) {
 
     if (current->child == NULL) {
         current->child = NewDirectory;
-        return EXIT_SUCCESS;
+        return NewDirectory;
     }
     else {
         if (strcmp(current->child->Name, name) > 0) {
@@ -122,7 +122,7 @@ int MakeDirectory(Position current, char* name) {
         }
     }
 
-    return EXIT_SUCCESS;
+    return NewDirectory;
 }
 
 int PrintDirectory(Position current) {
