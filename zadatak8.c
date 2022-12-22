@@ -17,6 +17,7 @@ typedef struct node
 
 int Menu();
 int Height(Position);
+int DeleteAll(Position P);
 int PrintInorder(Position);
 int PrintPreorder(Position);
 int PrintPostorder(Position);
@@ -88,6 +89,7 @@ int main()
 				break;
 		}
 	}while (option != 8);
+	DeleteAll(root);
 	return EXIT_SUCCESS;
 }
 
@@ -262,6 +264,16 @@ int main()
 
 		return P;
 	}
+
+	int DeleteAll(Position P) {
+    	if (P == NULL)
+		return EXIT_SUCCESS;
+   	DeleteAll(P->child);
+    	DeleteAll(P->sibling);
+    	free(P);
+    	return EXIT_SUCCESS;
+	}
+
 
 	int Menu()
 	{
