@@ -15,12 +15,14 @@ typedef struct node
 	Position left;
 }Node;
 
-Position InsertNew(Position, int);
+Position InsertNew(Position, Position);
 Position MakeNew(Position, int);
 int PrintInorder(Position);
 int PrintPreorder(Position);
 int PrintPostorder(Position);
 int PrintLevelorder(Position);
+int PrintCurrentLevel(Position, int);
+int Height(Position);
 Position DeleteElement(Position, int);
 Position FindElement(Position, int);
 Position FindMax(Position);
@@ -28,30 +30,65 @@ Position FindMin(Position);
 
 int main()
 {
-	struct node root;
-	root.data = 0;
-	root.left = NULL;
-	root.right = NULL;
-	Position tmp;
-	int x = 0, i = 0;
-	tmp = (Position)malloc(sizeof(node));
-	for (i = 0; i < 6; i++)
+	Position root;
+	root->data = 0;
+	root->left = NULL;
+	root->right = NULL;
+	Position element;
+	int x = 0, i = 0, option = 0, number = 0;
+	element = (Position)malloc(sizeof(Node));
+	do
 	{
-		scanf("%d", &x);
-		tmp = InsertNew(&root, x);
-	}
-	PrintInorder(&root);
-	return EXIT_SUCCESS;
-}
+		switch (option)
+		{
+		case 1:
+			scanf("%d", &x);
+			Q = MakeNew(root, x);
+			root = InsertNew(root, Q);
+			break;
+		case 2;
+			PrintInorder(root);
+			break;
+		case 3:
+			PrintPostorder(root);
+			break;
+		case 4:
+			PrintPreorder(root);	
+			break;
+		case 5:
+			printf("Which element do you want do delete?\n");
+			scanf("%d", &number);
+			root = DeleteElement(root, number);
+			break;
+		case 6:
+			printf("Which element do you want to find?\n");
+			scanf("%d", &number);
+			element = FindElement(root, number);
+			if (element == NULL)
+				{
+					printf("Element not found!\n");
+					return ERROR;
+				}
+				else
+					printf("Element %d is found!\n", number);
+			break;
+		case 7:
+			printf("Exit.\n");
+			break;
+		default:
+			printf("Invalid input.\n");
+			break;
+		}while (option != 7);
+}return EXIT_SUCCESS;
 
-Position InsertNew(Position P, int x)
+Position InsertNew(Position P, Position Q)
 {
 	if (P == NULL)
-		P = MakeNew(P, x);
-	else if (P->data > x)
-		P->right = InsertNew(P->right, x);
+		return Q;
+	else if (P->data > Q->data)
+		P->right = InsertNew(P->right, Q);
 	else
-		P->left = InsertNew(P->left, x);
+		P->left = InsertNew(P->left, Q);
 	return P;
 }
 
@@ -74,7 +111,7 @@ int PrintInorder(Position P)
 	if (P == NULL)
 		return EXIT_SUCCESS;
 	PrintInorder(P->left);
-	printf("%d\t", P->data);
+	printf("%d\t", P->data);	
 	PrintInorder(P->right);
 	return EXIT_SUCCESS;
 }
@@ -99,6 +136,42 @@ int PrintPostorder(Position P)
 	return EXIT_SUCCESS;
 }
 
+int PrintLevelorder(Position P)
+{
+	int h = height(P);
+	int i = 0;
+	for (i = 1; i <= h; i++)
+		printCurrentLevel(root, i);
+}
+
+int printCurrentLevel(Position P, int level)
+{
+	if (P == NULL)
+		return EXIT_SUCCESS;
+	if (level == 1)
+		printf("%d ", P->data);
+	else if (level > 1) {
+		printCurrentLevel(P->left, level - 1);
+		printCurrentLevel(P->right, level - 1);
+	}
+	return EXIT_SUCCESS;
+}
+
+int Height(Position P)
+{
+	int right = 0, left = 0;
+	if (P == NULL)
+		return EXIT_SUCCESS;
+	else {
+		left = Height(P->left);
+		right = Height(P->right);
+
+		if (left > right)
+			return (left + 1);
+		else
+			return (right + 1);
+	}
+}
 Position DeleteElement(Position P, int data)
 {
 	if (P == NULL)
@@ -150,7 +223,7 @@ Position FindElement(Position P, int data)
 	{
 		P->right = FindElement(P->right, data);
 		return P;
-		}
+	}
 }
 
 Position FindMax(Position P)
