@@ -45,7 +45,7 @@ int main()
 	int array[N] = { 2, 5, 1, 7, 4, 8, 2, 11, 7, 3 };
 	char filename[MAX] = { 0 };
 	srand(unsigned(time(0)));
-	printf("Do you want determined numbers or randomly generated?\n");
+	printf("Do you want 1) determined numbers or 2) randomly generated?\nEnter the number > ");
 	scanf("%d", &choice);
 	if (choice == 1)
 	{
@@ -114,7 +114,6 @@ int InOrder(Position P, FILE *fp)
 
 int PrintInFile(Position P, char *fileName) {
 	FILE* fp = NULL;
-	int x = 0;
 	fp = fopen(fileName, "w");
 
 	if (fp == NULL)
