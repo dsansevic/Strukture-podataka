@@ -29,6 +29,7 @@ typedef struct _tree
 
 int PrintInOrder(Position);
 int PrintList(ListPosition);
+int DeleteAll(Position);
 int PrintBiggerThan(ListPosition, int);
 int CountriesCompare(Position, Position);
 int CityCompare(ListPosition, ListPosition);
@@ -62,6 +63,9 @@ int main()
 	printf("\nInsert minimal population > ");
 	scanf("%d", &minpopulation);
 	PrintBiggerThan(newroot->ListP, minpopulation);
+
+	deleteAll(root);
+	deleteAll(newroot);
 	return EXIT_SUCCESS;
 }
 
@@ -92,7 +96,6 @@ Position ReadCountriesFromFile(Position P, char* filename)
 		//Q->ListP = NULL;
 		Q->ListP = ReadCitiesFromFile(cityfile);
 		P = InsertCountriesSorted(P, Q);
-		//Q->ListP = ReadCitiesFromFile(cityfile);
 	}
 	fclose(fp);
 	return P;
@@ -147,7 +150,7 @@ ListPosition ReadCitiesFromFile(char* filename)
 		ListPosition Q = NULL;
 		Q = MakeNew(name, number);
 		InsertSortedCities(&head, Q);
-		printf("%s", head.Next->cityName);
+		printf(" %s ", head.Next->cityName);
 	}
 	//PrintList(&head);
 	fclose(fp);
@@ -208,7 +211,7 @@ int PrintList(ListPosition P)
 	}
 	while (P->Next != NULL)
 	{
-		printf("%s ", P->Next->cityName);
+		printf(" %s ", P->Next->cityName);
 		P = P->Next;
 	}
 	return EXIT_SUCCESS;
@@ -237,8 +240,18 @@ int PrintBiggerThan(ListPosition P, int x)
 	while (P->Next != NULL)
 	{
 		if (P->Next->population > x)
-			printf("%s ", P->Next->cityName);
+			printf(" %s ", P->Next->cityName);
 		P = P->Next;
 	}
+	return EXIT_SUCCESS;
+}
+
+int DeleteAll(Position P)
+{
+	if (P == NULL)
+		return EXIT_SUCCESS;
+	DeleteAll(P->left);
+	DeleteAll(P->right);
+	free(P);
 	return EXIT_SUCCESS;
 }
