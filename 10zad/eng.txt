@@ -1,3 +1,0 @@
-London 9000000
-Cambridge 124000
-Southampton 254361
