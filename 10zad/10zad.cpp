@@ -3,12 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #define EXIT_SUCCESS 0
 #define MAX_FILE_NAME 256
 #define ERROR -1
 #define MAX 100
-
 
 struct _tree;
 typedef struct _tree* Position;
@@ -19,7 +17,6 @@ typedef struct _tree
 	Position right;
 	Position left;
 }tree;
-
 
 struct _list;
 typedef struct _list* ListPosition;
