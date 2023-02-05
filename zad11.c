@@ -109,15 +109,10 @@ int ReadCountryFromFile(Hashtab H, char* filename)
 
 int InsertSortedCountries(ListPosition P, ListPosition Q)
 {
-	/*while (P->Next != NULL && strcmp(P->Next->stateName, Q->stateName) < 0)
-		P = P->Next;*/
-	ListPosition temp = NULL;
+	while (P->Next != NULL && strcmp(P->Next->stateName, Q->stateName) < 0)
+		P = P->Next;
 
-	for (temp = P;
-		temp->Next != NULL && strcmp(temp->Next->stateName, Q->stateName) < 0;
-		temp = temp->Next)
-		;
-	InsertAfter(temp, Q);
+	InsertAfter(P, Q);
 	return EXIT_SUCCESS;
 }
 
@@ -208,7 +203,7 @@ int PrintInOrder(Position P)
 ListPosition FindCountryByName(ListPosition P, char* name)
 {
 	ListPosition head = P;
-	for(head = head->Next; head != NULL; head = head->Next) //bolje sa for petljom
+	for(head = head->Next; head != NULL; head = head->Next)
 	{
 		if (strcmp(head->stateName, name) == 0)
 			return head;
